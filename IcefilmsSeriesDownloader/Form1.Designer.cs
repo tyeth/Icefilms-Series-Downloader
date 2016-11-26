@@ -40,20 +40,24 @@
             this.clmnURL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uncheckEntireSeasonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCopy = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.prgToolbar = new System.Windows.Forms.ToolStripProgressBar();
             this.txtStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uncheckEntireSeasonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deselectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchForShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forTVShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forMovieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forALLRESULTSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -76,6 +80,8 @@
             this.edtShowURL.Name = "edtShowURL";
             this.edtShowURL.Size = new System.Drawing.Size(379, 20);
             this.edtShowURL.TabIndex = 1;
+            this.edtShowURL.Text = "https://icefilms.unblocked.uno/tv/series/1/814";
+            this.edtShowURL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edtShowURL_KeyPress);
             // 
             // btnGo
             // 
@@ -93,6 +99,7 @@
             this.lvEpisodes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvEpisodes.AutoArrange = false;
             this.lvEpisodes.CheckBoxes = true;
             this.lvEpisodes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmnSeason,
@@ -104,6 +111,7 @@
             this.lvEpisodes.GridLines = true;
             this.lvEpisodes.Location = new System.Drawing.Point(12, 54);
             this.lvEpisodes.Name = "lvEpisodes";
+            this.lvEpisodes.OwnerDraw = false;
             this.lvEpisodes.Size = new System.Drawing.Size(560, 299);
             this.lvEpisodes.TabIndex = 4;
             this.lvEpisodes.UseCompatibleStateImageBehavior = false;
@@ -144,6 +152,13 @@
             this.testToolStripMenuItem.Text = "Check Entire Season";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
+            // uncheckEntireSeasonToolStripMenuItem
+            // 
+            this.uncheckEntireSeasonToolStripMenuItem.Name = "uncheckEntireSeasonToolStripMenuItem";
+            this.uncheckEntireSeasonToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.uncheckEntireSeasonToolStripMenuItem.Text = "Uncheck Entire Season";
+            this.uncheckEntireSeasonToolStripMenuItem.Click += new System.EventHandler(this.uncheckEntireSeasonToolStripMenuItem_Click);
+            // 
             // btnCopy
             // 
             this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -182,7 +197,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.searchForShowToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(584, 24);
@@ -197,6 +213,13 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -210,9 +233,23 @@
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.selectAllToolStripMenuItem.Text = "Check All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
+            // 
+            // deselectAllToolStripMenuItem
+            // 
+            this.deselectAllToolStripMenuItem.Name = "deselectAllToolStripMenuItem";
+            this.deselectAllToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.deselectAllToolStripMenuItem.Text = "Uncheck All";
+            this.deselectAllToolStripMenuItem.Click += new System.EventHandler(this.deselectAllToolStripMenuItem_Click);
+            // 
+            // clearListToolStripMenuItem
+            // 
+            this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
+            this.clearListToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.clearListToolStripMenuItem.Text = "Clear List";
+            this.clearListToolStripMenuItem.Click += new System.EventHandler(this.clearListToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -222,20 +259,6 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // uncheckEntireSeasonToolStripMenuItem
-            // 
-            this.uncheckEntireSeasonToolStripMenuItem.Name = "uncheckEntireSeasonToolStripMenuItem";
-            this.uncheckEntireSeasonToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.uncheckEntireSeasonToolStripMenuItem.Text = "Uncheck Entire Season";
-            this.uncheckEntireSeasonToolStripMenuItem.Click += new System.EventHandler(this.uncheckEntireSeasonToolStripMenuItem_Click);
-            // 
-            // deselectAllToolStripMenuItem
-            // 
-            this.deselectAllToolStripMenuItem.Name = "deselectAllToolStripMenuItem";
-            this.deselectAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.deselectAllToolStripMenuItem.Text = "Uncheck All";
-            this.deselectAllToolStripMenuItem.Click += new System.EventHandler(this.deselectAllToolStripMenuItem_Click);
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -243,19 +266,36 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // quitToolStripMenuItem
+            // searchForShowToolStripMenuItem
             // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
-            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            this.searchForShowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.forTVShowToolStripMenuItem,
+            this.forMovieToolStripMenuItem,
+            this.forALLRESULTSToolStripMenuItem});
+            this.searchForShowToolStripMenuItem.Name = "searchForShowToolStripMenuItem";
+            this.searchForShowToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.searchForShowToolStripMenuItem.Text = "Search";
             // 
-            // clearListToolStripMenuItem
+            // forTVShowToolStripMenuItem
             // 
-            this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
-            this.clearListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearListToolStripMenuItem.Text = "Clear List";
-            this.clearListToolStripMenuItem.Click += new System.EventHandler(this.clearListToolStripMenuItem_Click);
+            this.forTVShowToolStripMenuItem.Name = "forTVShowToolStripMenuItem";
+            this.forTVShowToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.forTVShowToolStripMenuItem.Text = "For TV Show";
+            this.forTVShowToolStripMenuItem.Click += new System.EventHandler(this.forTVShowToolStripMenuItem_Click);
+            // 
+            // forMovieToolStripMenuItem
+            // 
+            this.forMovieToolStripMenuItem.Name = "forMovieToolStripMenuItem";
+            this.forMovieToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.forMovieToolStripMenuItem.Text = "For Movie";
+            this.forMovieToolStripMenuItem.Click += new System.EventHandler(this.forMovieToolStripMenuItem_Click);
+            // 
+            // forALLRESULTSToolStripMenuItem
+            // 
+            this.forALLRESULTSToolStripMenuItem.Name = "forALLRESULTSToolStripMenuItem";
+            this.forALLRESULTSToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.forALLRESULTSToolStripMenuItem.Text = "For ALL RESULTS";
+            this.forALLRESULTSToolStripMenuItem.Click += new System.EventHandler(this.forALLRESULTSToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -274,6 +314,7 @@
             this.MinimumSize = new System.Drawing.Size(600, 210);
             this.Name = "Form1";
             this.Text = "Icefilms Series Downloader";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -289,7 +330,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox edtShowURL;
         private System.Windows.Forms.Button btnGo;
-        private System.Windows.Forms.ListView lvEpisodes;
         private System.Windows.Forms.ColumnHeader clmnSeason;
         private System.Windows.Forms.ColumnHeader clmnEpisode;
         private System.Windows.Forms.ColumnHeader clmnTitle;
@@ -310,6 +350,11 @@
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchForShowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forTVShowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forMovieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forALLRESULTSToolStripMenuItem;
+        public System.Windows.Forms.ListView lvEpisodes;
     }
 }
 
